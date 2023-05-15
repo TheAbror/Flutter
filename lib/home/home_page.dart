@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todoapp/model/todo_model.dart';
-import 'package:todoapp/todo_item.dart';
+import 'package:todoapp/widgets/todo_item.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -136,7 +136,7 @@ class _HomeState extends State<Home> {
               onChanged: (value) {
                 _runFilter(value);
               },
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 contentPadding: EdgeInsets.symmetric(horizontal: 10),
                 prefixIcon: Icon(
                   Icons.search,

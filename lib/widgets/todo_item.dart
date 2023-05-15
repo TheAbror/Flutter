@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:todoapp/model/todo_model.dart';
 
@@ -6,7 +8,12 @@ class TodoItem extends StatelessWidget {
   final onToDoChanged;
   final onDelete;
 
-  const TodoItem({super.key, required this.todoo, this.onToDoChanged, this.onDelete});
+  const TodoItem({
+    super.key,
+    required this.todoo,
+    this.onToDoChanged,
+    this.onDelete,
+  });
 
   @override
   Widget build(BuildContext context) {
