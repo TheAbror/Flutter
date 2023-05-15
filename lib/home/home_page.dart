@@ -52,12 +52,20 @@ class _HomeState extends State<Home> {
 
   void _addTodoItem(String todo) {
     setState(() {
-      todoList.add(
-        TodoModel(
-          id: DateTime.now().millisecondsSinceEpoch.toString(),
-          todoText: todo,
-        ),
-      );
+      if (todo.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Todo cant be empty!'),
+          ),
+        );
+      } else {
+        todoList.add(
+          TodoModel(
+            id: DateTime.now().millisecondsSinceEpoch.toString(),
+            todoText: todo,
+          ),
+        );
+      }
     });
     _todoController.clear();
   }
@@ -85,11 +93,20 @@ class _HomeState extends State<Home> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: TextField(
+                      cursorColor: Colors.grey.shade900,
                       controller: _todoController,
-                      decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(horizontal: 15),
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 15),
                         hintText: 'Add a new task',
                         border: InputBorder.none,
+                        focusColor: Colors.grey.shade900,
+                        hoverColor: Colors.grey.shade900,
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.grey.shade900,
+                          ),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
                     ),
                   ),
